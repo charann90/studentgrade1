@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Class Dashboard</h1>
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <th>Class Name</th>
+            <th>Grades</th>
+            <th>Marks</th>
+            <th>Status</th>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row["student_name"] }}</td>
+            <td>{{ row["class_name"] }}</td>
+            <td>{{ row["grade"] }}</td>
+            <td>{{ row["marks"] }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

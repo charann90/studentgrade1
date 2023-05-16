@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block title %} Grade Form Submission {% endblock title%}
+{% block style %}
+    <style>
+        h1 {
+            text-align: center;
+        }
+        a {
+            display: inline-block;
+            background: #313030;
+            color: #FFF;
+            border: 0;
+            border-radius: 4px;
+            text-align: center;
+            padding: 20px 30px;
+            line-height: 1;
+            text-decoration: none;
+        }
+        a:hover {
+          background: #c7c5c5;
+          color: #313030;
+        }
+        .a2 {
+            margin-left: 1em;
+        }
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            border: 3px solid #313030;
+        }
+    </style>
+{% endblock style %}
+{% block content %}
+    <div class="form-content my-3 p-3">
+		<div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow-lg border-0 rounded-lg mt-0 mb-5">
+                      <br>
+                      <div class="alert alert-success" role="alert">
+                        <div class="card-header justify-content-center">
+                        	<h3 class="font-weight-light my-4 text-center">Create Account</h3>
+                        </div>
+                      </div>
+
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {% if form.errors %}
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <div id="form_errors">
+                                            {% for key, value in form.errors.items %}
+                                                <strong>{{ value }}</strong>
+                                            {% endfor %}
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endif %}
+                                <div class="form-row">
+                                    <div class="col-md-6">
+		                                <div class="form-group">
+		                                	<label class="small mb-1">Student Name</label>
+		                                    {{ form.student_name }}
+                                            <input id="student_name" type="text" name="student_name" >
+		                                </div>
+		                            </div>
+                                    <div class="col-md-6">
+		                                <div class="form-group">
+		                                	<label class="small mb-1">Class Name</label>
+		                                    {{ form.class_name }}
+                                            <input id="class" type="text" name="class_name" >
+		                                </div>
+		                            </div>
+		                        </div>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="small mb-1">Grade</label>
+                                            {{ form.grade}}
+                                            <input id="grade" type="text" name="grade" >
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label class="small mb-1">Marks</label>
+                                            {{ form.marks}}
+                                            <input id="marks" type="number" name="marks" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-4 mb-0">
+                                    <button type="submit" class="col-md-12 btn btn-dark">Submit</button><br><br>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+{% endblock content %}
